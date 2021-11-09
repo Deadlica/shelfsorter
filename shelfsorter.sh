@@ -1,4 +1,5 @@
 #!/bin/bash
+export LANG=utf8_swedish_ci
 
 helpInfo() {
 	echo "Usage: shelfsorter [-p|-s {i|n|v|l|b|h}]"
@@ -17,6 +18,7 @@ while getopts ":-hps:" opt
 do
 	case $opt in
 		p)
+			echo "ID      Namn            Vikt    L       B       H"
 			cat furniture.txt
 			exit 1
 		;;
@@ -35,20 +37,26 @@ done
 
 if [[ "$sorts" == *i* ]]
 then
-	echo "id"
+	echo "ID      Namn            Vikt    L       B       H"
+	cat | sort -k 1n
 elif [[ "$sorts" == *n* ]]
 then
-	echo "name"
+	echo "ID      Namn            Vikt    L       B       H"
+	cat | sort -k 2 
 elif [[ "$sorts" == *v* ]]
 then
-	echo "weight"
+	echo "ID      Namn            Vikt    L       B       H"
+	cat | sort -k 3n
 elif [[ "$sorts" == *l* ]]
 then
-	echo "length"
+	echo "ID      Namn            Vikt    L       B       H"
+	cat | sort -k 4n
 elif [[ "$sorts" == *b* ]]
 then
-	echo "width"
+	echo "ID      Namn            Vikt    L       B       H"
+	cat | sort -k 5n
 elif [[ "$sorts" == *h* ]]
 then
-	echo "height"
+	echo "ID      Namn            Vikt    L       B       H"
+	cat | sort -k 6n
 fi
