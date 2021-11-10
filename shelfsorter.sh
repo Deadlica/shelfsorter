@@ -1,5 +1,5 @@
 #!/bin/bash
-export LANG=utf8_swedish_ci
+export LANG=sv_SE.UTF8
 
 helpInfo() {
 	echo "Usage: shelfsorter [-p|-s {i|n|v|l|b|h}]"
@@ -18,8 +18,8 @@ while getopts ":-hps:" opt
 do
 	case $opt in
 		p)
-			echo "ID      Namn            Vikt    L       B       H"
-			cat furniture.txt
+			echo "ID   Namn          Vikt   L    B    H"
+			column -t -s$'\t'
 			exit 1
 		;;
 		s)
@@ -37,26 +37,26 @@ done
 
 if [[ "$sorts" == *i* ]]
 then
-	echo "ID      Namn            Vikt    L       B       H"
-	cat | sort -k 1n
+	echo "ID   Namn          Vikt   L    B    H"
+	sort -k 1 | column -t -s$'\t'
 elif [[ "$sorts" == *n* ]]
 then
-	echo "ID      Namn            Vikt    L       B       H"
-	cat | sort -k 2 
+	echo "ID   Namn          Vikt   L    B    H"
+	sort -k 2 | column -t -s$'\t'
 elif [[ "$sorts" == *v* ]]
 then
-	echo "ID      Namn            Vikt    L       B       H"
-	cat | sort -k 3n
+	echo "ID   Namn          Vikt   L    B    H"
+	sort -k 3n -t$'\t' | column -t -s$'\t'
 elif [[ "$sorts" == *l* ]]
 then
-	echo "ID      Namn            Vikt    L       B       H"
-	cat | sort -k 4n
+	echo "ID   Namn          Vikt   L    B    H"
+	sort -k 4n -t$'\t' | column -t -s$'\t'
 elif [[ "$sorts" == *b* ]]
 then
-	echo "ID      Namn            Vikt    L       B       H"
-	cat | sort -k 5n
+	echo "ID   Namn          Vikt   L    B    H"
+	sort -k 5n -t$'\t' | column -t -s$'\t'
 elif [[ "$sorts" == *h* ]]
 then
-	echo "ID      Namn            Vikt    L       B       H"
-	cat | sort -k 6n
+	echo "ID   Namn          Vikt   L    B    H"
+	sort -k 6n -t$'\t' | column -t -s$'\t'
 fi
